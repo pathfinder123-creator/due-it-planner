@@ -159,7 +159,7 @@ function openTemplates(){
 function startItemTemplate(key,action){
  const t=itemTemplates.find(t=>t.key===key);if(!t||!t.choices.includes(action))throw Error('Choose a valid template and action.');
  const p={id:'',title:t.titles[action],action,priority:'standard',date:'',time:'',description:'',category:'',location:'',link:'',lead:null,repeat:'none',done:false,steps:t.steps.map(title=>({id:id(),title,date:'',done:false}))};
- $('templatedialog').close();openEditor(p);$('editortitle').textContent='Make this template yours';$('templatehint').hidden=false;$('date').value='';editorRepeatAnchor='';syncRepeatControls();$('description').placeholder='Add the details you need to remember.';
+ $('templatedialog').close();openEditor(p);$('extradetails').open=false;$('stepsdetails').open=false;$('editortitle').textContent='Make this template yours';$('templatehint').hidden=false;$('date').value='';editorRepeatAnchor='';syncRepeatControls();$('description').placeholder='Add the details you need to remember.';
  $('title').focus();$('title').select();
 }
 $('templatecards').addEventListener('click',e=>{const b=e.target.closest('[data-usetemplate]');if(b)startItemTemplate(b.dataset.usetemplate,$('template-action-'+b.dataset.usetemplate).value)});
